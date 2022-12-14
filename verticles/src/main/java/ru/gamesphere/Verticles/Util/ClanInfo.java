@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -18,4 +19,14 @@ public final class ClanInfo implements Serializable {
     private final Set<String> membersList;
     private final Set<String> modersList;
     private final String adminName;
+
+    public ClanInfo() {
+        this.maxUsers = 10;
+        this.maxModerators = 1;
+        this.clanName = "DefaultClan";
+        this.isAdminOnline = true;
+        this.membersList = new HashSet<>();
+        this.modersList = new HashSet<>();
+        this.adminName = "DefaultAdmin";
+    }
 }
