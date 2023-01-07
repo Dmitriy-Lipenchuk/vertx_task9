@@ -5,15 +5,22 @@ plugins {
 group = "ru.gamesphere"
 version = "1.0-SNAPSHOT"
 
-repositories {
-    mavenCentral()
-}
+subprojects  {
+    repositories {
+        mavenCentral()
+    }
 
-dependencies {
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
-}
+    apply {
+        plugin ("java")
+    }
 
-tasks.getByName<Test>("test") {
-    useJUnitPlatform()
+    dependencies {
+        implementation("org.jetbrains:annotations:23.0.0")
+
+        implementation("io.vertx:vertx-core:4.3.5")
+        implementation("io.vertx:vertx-hazelcast:4.3.5")
+
+        compileOnly("org.projectlombok:lombok:1.18.24")
+        annotationProcessor("org.projectlombok:lombok:1.18.24")
+    }
 }
